@@ -7,7 +7,7 @@ organization := "me.penkov"
 name := """sbt-notifications"""
 
 //Change to the version
-version := "0.0.1-SNAPSHOT"
+version := "0.0.1"
 
 scalaVersion := "2.10.5"
 
