@@ -1,0 +1,13 @@
+/RUNNING_PID
+/logs/
+/project/*-shim.sbt
+/project/project/
+/project/target/
+/target/
+.idea
+.sbtserver
+activator*
+/project/.sbtserver.lock
+/NotificationsPluginTest/target/
+/NotificationsPluginTest/project/project/
+/NotificationsPluginTest/project/target/
