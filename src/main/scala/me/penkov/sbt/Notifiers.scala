@@ -39,11 +39,10 @@ object ToastNotifier extends Notifier {
 }
 
 object MacNotifier extends Notifier {
-  override def isAvailable = System.getProperty("os.name").startsWith("Mac")
+  override def isAvailable = System.getProperty("os.name") == ("Mac OS X")
   
   def notify(title: String, message: String) = {
-    val script = s"""display notification "$message" with title "$title" """
-    (s"osascript -e '$script'").!
+    Process("osascript", Seq("-e", s"""display notification "$message" with title "$title" """)).!    
   }
 }
 
