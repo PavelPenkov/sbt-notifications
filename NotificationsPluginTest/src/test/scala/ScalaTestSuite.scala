@@ -46,3 +46,9 @@ class SecondTest extends FunSuite {
     assert(xs(1) == 1)
   }
 }
+
+class SuccessSuite extends FunSuite {
+  test("success") {
+    assert(true)
+  }
+}

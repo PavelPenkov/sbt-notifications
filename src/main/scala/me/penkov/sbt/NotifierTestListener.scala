@@ -19,7 +19,7 @@ object NullNotifier extends Notifier {
 class NotifierTestListener(val projectName: String, val onlyFailure: Boolean = false) extends TestsListener {
   private var errorCount, passedCount, ignoredCount, failedCount, pendingCount = 0
 
-  val notifier = List(ToastNotifier).find(_.isAvailable) getOrElse NullNotifier
+  val notifier = Seq(ToastNotifier, LibNotifier, MacNotifier).find(_.isAvailable) getOrElse NullNotifier
   
   override def doInit() = {
     errorCount = 0

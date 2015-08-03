@@ -11,11 +11,8 @@ object NotificationsPlugin extends AutoPlugin {
 
   import autoImport._ 
 
-  val parser = Space ~ StringBasic ~ Space ~ StringBasic
-
-  println(parser.getClass())
-
   override lazy val projectSettings = Seq(
     testListeners += new NotifierTestListener(name.value, notifyFailureOnly.value),
+    notifyFailureOnly := false
   )
 }

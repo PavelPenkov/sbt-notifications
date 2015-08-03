@@ -9,4 +9,4 @@ scalacOptions in Test ++= Seq("-Yrangepos")
 
 name := "toast-plugin-test"
 
-notifyFailureOnly := false
+notifyFailureOnly := true

@@ -4,6 +4,7 @@ import sbt._
 import java.io.ByteArrayInputStream
 import java.nio.charset.StandardCharsets
 import scala.xml._
+import scala.sys.process.ProcessLogger
 
 object ToastNotifier extends Notifier {
   override def isAvailable = System.getProperty("os.name").startsWith("Windows")
@@ -31,14 +32,14 @@ object ToastNotifier extends Notifier {
     """
 
     val stream = new ByteArrayInputStream(script.getBytes(StandardCharsets.UTF_8))
-    ("powershell -Command -" #< stream).!
+    ("powershell -Command -" #< stream).! 
   }
   
   private def toPsString(xml: Elem) = xml.toString.split("\n").map(_.trim).mkString.replace("\"", "`\"")
 }
 
 object MacNotifier extends Notifier {
-  override def isAvailable = true
+  override def isAvailable = System.getProperty("os.name").startsWith("Mac")
   
   def notify(title: String, message: String) = {
     val script = s"""display notification "$message" with title "$title" """
@@ -47,9 +48,9 @@ object MacNotifier extends Notifier {
 }
 
 object LibNotifier extends Notifier {
-  override def isAvailable = System.getProperty("os.name") == "Linux" && "which notify-send".! == 0  
+  override def isAvailable = {
+    System.getProperty("os.name") == "Linux" && "which notify-send".!!.matches(".*notify-send\\s+")
+  }
 
-  def notify(title: String, message: String) = {
-    (s"notify-send $title $message").!
-  }  
+  def notify(title: String, message: String) = ("notify-send" +: Seq(title, message)).!
 }
