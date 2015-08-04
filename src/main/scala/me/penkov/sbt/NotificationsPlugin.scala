@@ -15,4 +15,6 @@ object NotificationsPlugin extends AutoPlugin {
     testListeners += new NotifierTestListener(name.value, notifyFailureOnly.value),
     notifyFailureOnly := false
   )
+
+  override def trigger = AllRequirements
 }

@@ -1,13 +1,14 @@
-# An activator seed for creating sbt plugins
+# sbt-notifications
 
-[![Build Status](https://travis-ci.org/VoxNova/sbt-plugin-seed.svg?branch=master)](https://travis-ci.org/VoxNova/sbt-plugin-seed)
+A simple sbt 0.13.x plugin that sends native OS notifications when tests are completed. Uses Toast notifications on Windows (tested on Windows 10), Notification Center on Mac OS X (tested on Mac OS X Yosemite) and `libnotify` on Linux (requires `libnotify-bin` package, tested on Ubuntu with Gnome).
 
-### Resources
+### Usage
+Add the following to `./project/plugins.sbt`
+    
+	addSbtPlugin("me.penkov" % "sbt-notifications" % "0.0.2")
 
-[SBT-Plugin Best Practices](http://www.scala-sbt.org/0.13/docs/Plugins-Best-Practices.html)
+To receive notifications only when tests failed use 
 
-[Building Scala/SBT Projects with Travis CI](http://docs.travis-ci.com/user/languages/scala/)
+	notifyOnlyFailure := true
 
-[SBT AutoPlugins Tutorial](http://mukis.de/pages/sbt-autoplugins-tutorial/)
-
-[testing sbt plugins](http://eed3si9n.com/testing-sbt-plugins)
+in build definition.
