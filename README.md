@@ -9,6 +9,6 @@ Add the following to `./project/plugins.sbt`
 
 To receive notifications only when tests failed use 
 
-	notifyOnlyFailure := true
+	notifyFailureOnly := true
 
 in build definition.
