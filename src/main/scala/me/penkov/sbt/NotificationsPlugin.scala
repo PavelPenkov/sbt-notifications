@@ -20,8 +20,7 @@ object NotificationsPlugin extends AutoPlugin {
         println(incomplete.toString)
         notifier.notify(
           s"⚠️ ${t.key.label}",
-          // TODO: try to show failure cause
-          "Failure!"
+          incomplete.causes.flatMap(_.directCause).mkString("• ", "\n• ", "")
         )
         throw incomplete
       }
