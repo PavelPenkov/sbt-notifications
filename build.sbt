@@ -4,7 +4,7 @@ organization := "me.penkov"
 
 name := """sbt-notifications"""
 
-version := "0.1.0"
+version := "0.2.0"
 
 licenses += ("MIT", url("http://opensource.org/licenses/MIT"))
 
