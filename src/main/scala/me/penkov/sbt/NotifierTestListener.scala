@@ -29,7 +29,7 @@ class NotifierTestListener(val projectName: String, val onlyFailure: Boolean = f
     pendingCount = 0
   }  
   
-  override def endGroup(name: String, result: TestResult.Value) = {}
+  override def endGroup(name: String, result: TestResult) = {}
   
   override def endGroup(name: String, t: Throwable) = {}
   
@@ -44,7 +44,7 @@ class NotifierTestListener(val projectName: String, val onlyFailure: Boolean = f
     pendingCount+=result.pendingCount
   }
   
-  override def doComplete(finalResult: TestResult.Value) = {
+  override def doComplete(finalResult: TestResult) = {
     val message = s"Tests: passed $passedCount, failed $failedCount, ignored $ignoredCount, pending $pendingCount"    
     
     if(!onlyFailure || (onlyFailure && finalResult != TestResult.Passed)) notifier.notify(s"$projectName - $finalResult", message)

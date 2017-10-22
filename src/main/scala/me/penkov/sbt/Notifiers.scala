@@ -4,7 +4,7 @@ import sbt._
 import java.io.ByteArrayInputStream
 import java.nio.charset.StandardCharsets
 import scala.xml._
-import scala.sys.process.ProcessLogger
+import scala.sys.process._
 
 object ToastNotifier extends Notifier {
   override def isAvailable = System.getProperty("os.name").startsWith("Windows")
