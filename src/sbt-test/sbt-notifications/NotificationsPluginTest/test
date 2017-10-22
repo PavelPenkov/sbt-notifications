@@ -1,0 +1,4 @@
+> testOnly SuccessSuite
+-> testOnly FirstTest
+-> testOnly SecondTest
+-> testOnly SpecsSuite
